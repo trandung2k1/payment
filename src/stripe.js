@@ -2,17 +2,20 @@ const express = require('express');
 require('dotenv').config();
 const Stripe = require('stripe');
 const stripe = Stripe(process.env.STRIP_PRIVATE_KEY)
+const path = require('path');
 const port = 4000;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, './'));
 stripe.customers
     .create({
         email: process.env.AUTH_EMAIL,
     })
     .then((customer) => console.log(customer.id))
     .catch((error) => console.error(error));
-app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
+app.get('/', (req, res) => res.render('index'));
 app.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
         line_items: [

@@ -1,8 +1,8 @@
 const express = require('express');
 const paypal = require('paypal-rest-sdk');
 require('dotenv').config();
+const path = require('path');
 const port = 4000;
-
 paypal.configure({
     mode: 'sandbox',
     client_id: process.env.PAYPAL_CLIENT_ID,
@@ -10,7 +10,9 @@ paypal.configure({
 });
 
 const app = express();
-app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, './'));
+app.get('/', (req, res) => res.render('index'));
 app.post('/pay', (req, res) => {
     const create_payment_json = {
         intent: 'sale',
