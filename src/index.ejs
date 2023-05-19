@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PayPal Payment</title>
+    <title>Payment with Momo, Paypal, Stripe</title>
 </head>
 
 <body>
-    <h1>Coding Shiksha App Store</h1>
-    <h2>Buy For $25</h2>
+    <h1>Payment with Momo, Paypal, Stripe</h1>
     <form action="/pay" method="post">
         <input type="submit" value="Buy Paypal">
     </form>
     <form action="/create-checkout-session" method="post">
         <input type="submit" value="Buy Stripe">
+    </form>
+    <form action="/checkout" method="post">
+        <input type="submit" value="Buy Momo">
     </form>
 </body>
 

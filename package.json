@@ -4,10 +4,12 @@
     "main": "src/index.js",
     "license": "MIT",
     "scripts": {
-        "dev": "nodemon",
-        "start": "nodemon src/stripe.js"
+        "start": "nodemon",
+        "stripe": "nodemon src/stripe.js",
+        "momo": "nodemon src/momo.js"
     },
     "dependencies": {
+        "axios": "^1.4.0",
         "cors": "^2.8.5",
         "dotenv": "^16.0.3",
         "ejs": "^3.1.9",
